@@ -1,4 +1,4 @@
-public class Queue<T> {
+public abstract class Queue<T> {
     private Node<T> front, rear;
     private int size;
 
