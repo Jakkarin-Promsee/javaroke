@@ -9,7 +9,14 @@ repositories {
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+    // testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2' // JUnit 5 API
+    // testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.8.2' // JUnit 5 engine
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.8.2' // For launching tests
 }
+
+// dependencies {
+//     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+// }
 
 application {
     mainClass = 'Main'
