@@ -21,6 +21,11 @@ public abstract class Queue<T> {
 
     // Enqueue data in the form as class T
     public void enqueue(T data) {
+        // If input data is null, exist this enqueue process
+        if (data == null) {
+            return;
+        }
+
         // Create newNode as class T,and call Node() self setup function.
         Node<T> newNode = new Node<T>(data);
 
@@ -46,6 +51,11 @@ public abstract class Queue<T> {
     // enqueueAtFront Option 2 with O(n).
     // Be definitely Queue main process, FIFO at all
     public void enqueueAtFront(T data) {
+        // If input data is null, exist this enqueue process
+        if (data == null) {
+            return;
+        }
+
         // Main operation
         if (isEmpty()) {
             // Direct enqueue, cause it already has nothing inside
@@ -58,21 +68,18 @@ public abstract class Queue<T> {
 
             // Dump all data from current to tempoQueue
             // Making current queue empty
-            while (this.size > 0) {
+            while (!isEmpty()) {
                 tempoQueue.enqueue(dequeue());
             }
 
             // Enqueue data first
-            this.enqueue(data);
+            enqueue(data);
 
             // Dump all old data from tempoQueue to current again
-            while (tempoQueue.size > 0) {
-                this.enqueue(tempoQueue.dequeue());
+            while (!tempoQueue.isEmpty()) {
+                enqueue(tempoQueue.dequeue());
             }
         }
-
-        // If endqueue function work correctly, plus size of queue by 1
-        size++;
     }
 
     // enqueueAtFront Option 2 with O(1).
