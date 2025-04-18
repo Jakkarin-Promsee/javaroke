@@ -29,16 +29,73 @@ public abstract class Queue<T> {
             // Front = rear point at new node
             front = rear = newNode;
         } else {
-            // Connect rear.next to new node
+            // Connect rear.next to newNode, making newNode be lastest rear
             rear.next = newNode;
 
-            // Move rear to new node that live in the last of this liked list
+            // Move rear to newNode that live in the last rear of this liked list
             rear = newNode;
         }
 
         // If endqueue function work correctly, plus size of queue by 1
         size++;
     }
+
+    // Enqueue data at front position in the form as class T
+    // Use for backward function, work parallel with history stack
+
+    // enqueueAtFront Option 2 with O(n).
+    // Be definitely Queue main process, FIFO at all
+    public void enqueueAtFront(T data) {
+        // Main operation
+        if (isEmpty()) {
+            // Direct enqueue, cause it already has nothing inside
+            enqueue(data);
+        } else {
+            // Create new queue for tempo dump data from current queue
+            // Due to queue is abstract class now, have to use {} for make it be concrete
+            Queue<T> tempoQueue = new Queue<T>() {
+            };
+
+            // Dump all data from current to tempoQueue
+            // Making current queue empty
+            while (this.size > 0) {
+                tempoQueue.enqueue(dequeue());
+            }
+
+            // Enqueue data first
+            this.enqueue(data);
+
+            // Dump all old data from tempoQueue to current again
+            while (tempoQueue.size > 0) {
+                this.enqueue(tempoQueue.dequeue());
+            }
+        }
+
+        // If endqueue function work correctly, plus size of queue by 1
+        size++;
+    }
+
+    // enqueueAtFront Option 2 with O(1).
+    // Still be Queue main process, but not FIFO at all
+    // public void enqueueAtFront(T data) {
+    // // Create newNode as class T,and call Node() self setup function.
+    // Node<T> newNode = new Node<T>(data);
+
+    // // Main operation
+    // if (isEmpty()) {
+    // // Front = rear point at new node
+    // front = rear = newNode;
+    // } else {
+    // // Connect newNode.next to front, making newNode be lastest front
+    // newNode.next = front;
+
+    // // Move front to newNode that live in the lastest front of this liked list
+    // front = newNode;
+    // }
+
+    // // If endqueue function work correctly, plus size of queue by 1
+    // size++;
+    // }
 
     // Dequeue data return as class T
     public T dequeue() {

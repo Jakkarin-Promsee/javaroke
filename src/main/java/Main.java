@@ -12,6 +12,7 @@ public class Main {
         queueLyric.enqueue("00:00", "I'm keep into the lesser fire");
         queueLyric.enqueue("00:07", "My body ached to be satisfy");
         queueLyric.enqueue("00:11", "My weakness come and go...");
+        queueLyric.enqueueAtFront(new NodeLyric("00:11", "dunno"));
 
         System.out.println("QueueLyric test>>  " + queueLyric.peek().time + " " + queueLyric.peek().line);
         queueLyric.dequeue();
