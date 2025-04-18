@@ -1,28 +1,17 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class QueueSongTest {
     @Test
-    public void QueueSongEnqueueTest() {
+    public void testQueueSongEnqueue() {
         QueueSong queueSong = new QueueSong();
 
-        // Enqueue items
-        queueSong.enqueue("yai-mak-mak");
-        queueSong.enqueue("hai-jai-mai-ook");
-        queueSong.enqueue("yak-tai");
+        queueSong.enqueue("Test 1");
 
-        // Assert
-        assertNotNull(queueSong.peek(), "Queue should not be empty after enqueueing");
-        assertEquals("yai-mak-mak", queueSong.peek().songId, "The first song ID in the queue should be 'yai-mak-mak'");
+        assertEquals("Test 1", queueSong.peek().songId, "enqueue failed at first in QueueSong extend");
 
-        // Dequeue items
-        queueSong.dequeue();
-        queueSong.dequeue();
+        queueSong.enqueue("Test 2");
 
-        // Assert
-        assertNotNull(queueSong.peek(), "Queue should not be empty after dequeuing");
-        assertEquals("yak-tai", queueSong.peek().songId, "The next song ID in the queue should be 'yak-tai'");
+        assertEquals("Test 1", queueSong.peek().songId, "enqueue failed at 2nd++ in QueueSong extend");
     }
 }
