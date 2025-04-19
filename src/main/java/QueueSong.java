@@ -31,7 +31,7 @@ public class QueueSong extends Queue<NodeSong> {
     }
 
     // Return List that carry all song name
-    public List<String> getNameList() {
+    public List<String> getTitleList() {
         return null;
     }
 
