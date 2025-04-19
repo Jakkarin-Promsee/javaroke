@@ -1,17 +1,20 @@
 import org.junit.jupiter.api.Test;
+
+import dataStructures.QueueAbstract;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class QueueTest {
     @Test
     public void testQueueInitialize() {
-        Queue<String> queue = new Queue<String>() {
+        QueueAbstract<String> queue = new QueueAbstract<String>() {
         };
         assertNotNull(queue, "queue initialize failed");
     }
 
     @Test
     public void testQueueSize() {
-        Queue<String> queue = new Queue<String>() {
+        QueueAbstract<String> queue = new QueueAbstract<String>() {
         };
 
         assertEquals(0, queue.size(), "blank queue size failed");
@@ -35,7 +38,7 @@ public class QueueTest {
 
     @Test
     public void testQueuePeek() {
-        Queue<String> queue = new Queue<String>() {
+        QueueAbstract<String> queue = new QueueAbstract<String>() {
         };
 
         queue.enqueue("Test 1");
@@ -45,7 +48,7 @@ public class QueueTest {
 
     @Test
     public void testQueueEnqueue() {
-        Queue<String> queue = new Queue<String>() {
+        QueueAbstract<String> queue = new QueueAbstract<String>() {
         };
 
         queue.enqueue("Test 1");
@@ -59,7 +62,7 @@ public class QueueTest {
 
     @Test
     public void testQueueEnqueueAtFront() {
-        Queue<String> queue = new Queue<String>() {
+        QueueAbstract<String> queue = new QueueAbstract<String>() {
         };
 
         queue.enqueueAtFront("Test 1");
@@ -73,7 +76,7 @@ public class QueueTest {
 
     @Test
     public void testQueueDequeue() {
-        Queue<String> queue = new Queue<String>() {
+        QueueAbstract<String> queue = new QueueAbstract<String>() {
         };
 
         queue.enqueue("Test 1");
@@ -91,7 +94,7 @@ public class QueueTest {
 
     @Test
     public void testQueueNull() {
-        Queue<String> queue = new Queue<String>() {
+        QueueAbstract<String> queue = new QueueAbstract<String>() {
         };
 
         assertNull(queue.peek(), "peek failed at blank queue");

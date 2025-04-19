@@ -1,3 +1,7 @@
+import dataStructures.QueueLyric;
+import dataStructures.QueueSong;
+import models.NodeLyric;
+
 public class Main {
     public static void main(String[] args) {
         QueueLyricTest();
@@ -15,10 +19,10 @@ public class Main {
         queueLyric.enqueueAtFront(new NodeLyric("00:11", "dunno"));
         queueLyric.enqueueAtFront(new NodeLyric("00:13", "dunno2"));
 
-        System.out.println("QueueLyric test>>  " + queueLyric.peek().time + " " + queueLyric.peek().line);
+        System.out.println("QueueLyric test>>  " + queueLyric.peek().getTime() + " " + queueLyric.peek().getline());
         queueLyric.dequeue();
         queueLyric.dequeue();
-        System.out.println("QueueLyric test>>  " + queueLyric.peek().time + " " + queueLyric.peek().line);
+        System.out.println("QueueLyric test>>  " + queueLyric.peek().getTime() + " " + queueLyric.peek().getline());
     }
 
     public static void QueueSongTest() {
@@ -28,11 +32,11 @@ public class Main {
         queueSong.enqueue("hai-jai-mai-ook", "Hai Jai Mai Ook", "A2", "06:46");
         queueSong.enqueue("yak-tai", "Yak Tai", "A3", "00:01");
 
-        System.out.println("QueueSong test>>  " + queueSong.peek().songId + ", "
-                + queueSong.peek().title + ", " + queueSong.peek().duration);
+        System.out.println("QueueSong test>>  " + queueSong.peek().getSongId() + ", "
+                + queueSong.peek().getTitle() + ", " + queueSong.peek().getDuration());
         queueSong.dequeue();
         queueSong.dequeue();
-        System.out.println("QueueSong test>>  " + queueSong.peek().songId + ", "
-                + queueSong.peek().title + ", " + queueSong.peek().duration);
+        System.out.println("QueueSong test>>  " + queueSong.peek().getSongId() + ", "
+                + queueSong.peek().getTitle() + ", " + queueSong.peek().getDuration());
     }
 }

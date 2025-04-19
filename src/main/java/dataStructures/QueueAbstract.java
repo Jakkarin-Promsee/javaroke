@@ -1,9 +1,14 @@
-public abstract class Queue<T> {
+package dataStructures;
+
+import models.Node;
+
+public abstract class QueueAbstract<T> {
     private Node<T> front, rear;
+
     private int size;
 
     // Set Default Queue
-    public Queue() {
+    public QueueAbstract() {
         this.front = null;
         this.rear = null;
         this.size = 0;
@@ -35,7 +40,7 @@ public abstract class Queue<T> {
             front = rear = newNode;
         } else {
             // Connect rear.next to newNode, making newNode be lastest rear
-            rear.next = newNode;
+            rear.setNext(newNode);
 
             // Move rear to newNode that live in the last rear of this liked list
             rear = newNode;
@@ -63,7 +68,7 @@ public abstract class Queue<T> {
         } else {
             // Create new queue for tempo dump data from current queue
             // Due to queue is abstract class now, have to use {} for make it be concrete
-            Queue<T> tempoQueue = new Queue<T>() {
+            QueueAbstract<T> tempoQueue = new QueueAbstract<T>() {
             };
 
             // Dump all data from current to tempoQueue
@@ -112,10 +117,10 @@ public abstract class Queue<T> {
         }
 
         // Recieve Front data before move node pointer
-        T data = front.data;
+        T data = front.getData();
 
         // Move front pointer to front.next
-        front = front.next;
+        front = front.getNext();
 
         // If dequeue function work correctly, reduce size of queue by 1
         size--;
@@ -138,6 +143,6 @@ public abstract class Queue<T> {
         }
 
         // Return data in front node
-        return front.data;
+        return front.getData();
     }
 }

@@ -1,6 +1,9 @@
-import java.util.List;
+package dataStructures;
 
-public class QueueSong extends Queue<NodeSong> {
+import java.util.List;
+import models.NodeSong;
+
+public class QueueSong extends QueueAbstract<NodeSong> {
     // Set up Queue Song
     public QueueSong() {
         super(); // like use Queue() to set up queue<NodeSOng> that we are extended
