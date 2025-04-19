@@ -24,13 +24,15 @@ public class Main {
     public static void QueueSongTest() {
         QueueSong queueSong = new QueueSong();
 
-        queueSong.enqueue("yai-mak-mak");
-        queueSong.enqueue("hai-jai-mai-ook");
-        queueSong.enqueue("yak-tai");
+        queueSong.enqueue("yai-mak-mak", "Yai Mak Mak", "A1", "03:12");
+        queueSong.enqueue("hai-jai-mai-ook", "Hai Jai Mai Ook", "A2", "06:46");
+        queueSong.enqueue("yak-tai", "Yak Tai", "A3", "00:01");
 
-        System.out.println("QueueSong test>>  " + queueSong.peek().songId);
+        System.out.println("QueueSong test>>  " + queueSong.peek().songId + ", "
+                + queueSong.peek().title + ", " + queueSong.peek().duration);
         queueSong.dequeue();
         queueSong.dequeue();
-        System.out.println("QueueSong test>>  " + queueSong.peek().songId);
+        System.out.println("QueueSong test>>  " + queueSong.peek().songId + ", "
+                + queueSong.peek().title + ", " + queueSong.peek().duration);
     }
 }
