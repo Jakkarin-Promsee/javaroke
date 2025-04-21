@@ -1,8 +1,11 @@
 package dataStructures;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 import models.Node;
 
-public abstract class QueueAbstract<T> {
+public abstract class QueueAbstract<T> implements Iterable<T> {
     private Node<T> front, rear;
 
     private int size;
@@ -144,5 +147,29 @@ public abstract class QueueAbstract<T> {
 
         // Return data in front node
         return front.getData();
+    }
+
+    // Add Iterator interface to this customize queue class
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            private Node<T> current = front;
+
+            @Override
+            public boolean hasNext() {
+                return current != null;
+            }
+
+            @Override
+            public T next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                T data = current.getData();
+                current = current.getNext();
+                return data;
+
+            }
+        };
     }
 }

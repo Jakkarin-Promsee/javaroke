@@ -4,16 +4,16 @@ import dataStructures.QueueAbstract;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class QueueTest {
+public class QueueAbstractTest {
     @Test
-    public void testQueueInitialize() {
+    public void testQueueAbstractInitialize() {
         QueueAbstract<String> queue = new QueueAbstract<String>() {
         };
         assertNotNull(queue, "queue initialize failed");
     }
 
     @Test
-    public void testQueueSize() {
+    public void testQueueAbstractSize() {
         QueueAbstract<String> queue = new QueueAbstract<String>() {
         };
 
@@ -37,7 +37,7 @@ public class QueueTest {
     }
 
     @Test
-    public void testQueuePeek() {
+    public void testQueueAbstractPeek() {
         QueueAbstract<String> queue = new QueueAbstract<String>() {
         };
 
@@ -47,7 +47,7 @@ public class QueueTest {
     }
 
     @Test
-    public void testQueueEnqueue() {
+    public void testQueueAbstractEnqueue() {
         QueueAbstract<String> queue = new QueueAbstract<String>() {
         };
 
@@ -61,7 +61,7 @@ public class QueueTest {
     }
 
     @Test
-    public void testQueueEnqueueAtFront() {
+    public void testQueueAbstractEnqueueAtFront() {
         QueueAbstract<String> queue = new QueueAbstract<String>() {
         };
 
@@ -75,7 +75,7 @@ public class QueueTest {
     }
 
     @Test
-    public void testQueueDequeue() {
+    public void testQueueAbstractDequeue() {
         QueueAbstract<String> queue = new QueueAbstract<String>() {
         };
 
@@ -93,7 +93,7 @@ public class QueueTest {
     }
 
     @Test
-    public void testQueueNull() {
+    public void testQueueAbstractNull() {
         QueueAbstract<String> queue = new QueueAbstract<String>() {
         };
 
@@ -113,5 +113,37 @@ public class QueueTest {
         queue.dequeue();
 
         assertNull(queue.dequeue(), "dequeue failed at last node");
+    }
+
+    @Test
+    public void testQueueAbstractIterable() {
+        // Create an anonymous concrete implementation of QueueAbstract
+        QueueAbstract<String> queue = new QueueAbstract<String>() {
+        };
+
+        // Test data
+        String[] expectedValues = { "Test 1", "Test 2", "Test 3", "Test 4" };
+
+        // Fill the queue
+        for (String value : expectedValues) {
+            queue.enqueue(value);
+        }
+
+        // Test size before iteration
+        assertEquals(4, queue.size(), "Queue size should be 4");
+
+        // Test iteration
+        int i = 0;
+        for (String data : queue) {
+            assertEquals(expectedValues[i], data,
+                    "Element at position " + i + " should match expected value");
+            i++;
+        }
+
+        // Verify we iterated through all elements
+        assertEquals(4, i, "Should have iterated through 4 elements");
+
+        // Verify queue is unchanged after iteration (still has all elements)
+        assertEquals(4, queue.size(), "Queue size should remain 4 after iteration");
     }
 }
